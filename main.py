@@ -18,6 +18,7 @@ def main():
   print("NB Hospital Distance Calculator\n")
   
   # prompt the user to input postal code and store it
+  postal_code = input("Enter your postal code (format: A1A1A1): ")
 
   # call function to get coordinates from postal code
   # and store them as latitude and longitude
