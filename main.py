@@ -5,6 +5,7 @@ import requests # we will need this to send HTTP requests to the APIs (retreive 
 #     parameters: ?postal={postal_code}&geoit=XML&json=1
 #   https://services7.arcgis.com/BuriUAtfp8cZMlDt/arcgis/rest/services/dev_waittimes_exb_hfl_6da46_c5905_9256e/FeatureServer/0/query
 #     parameters: ?f=json&where=1%3D1&outFields=*&resultRecordCount=100&returnGeometry=true
+#   we will need this to parse the XML response from the geocoder API
 
 # function to calculate distance between two coordinates in kilometres (Haversine formula)
 
