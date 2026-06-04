@@ -1,4 +1,4 @@
-import requests # we will need this to send web requests to the endpoints (retreive the data)
+import requests # we will need this to send HTTP requests to the APIs (retreive the data)
 
 # set constants for geocoder and NB hospital data API urls
 #   https://geocoder.ca/
@@ -14,7 +14,21 @@ import requests # we will need this to send web requests to the endpoints (retre
 
 # main function
 def main():
-  # code
+  print("NB Hospital Distance Calculator\n")
+  
+  # prompt the user to input postal code and store it
+
+  # call function to get coordinates from postal code
+  # and store them as latitude and longitude
+
+  # call function to get hospital data
+
+  # loop through hospitals and calculate the distance 
+  # from the user's coordinates to each hospital (haversine function)
+
+  # sort hospitals by distance
+
+  # print the closest hospital(s)
 
 if __name__ == "__main__":
     main()
