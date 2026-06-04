@@ -49,25 +49,32 @@ public class Main {
                 JsonArray features = rootObj.getAsJsonArray("features");
                 
                 System.out.println("------Coordinates-----");
-                for (JsonElement feature : features) {
+
+                int count = 1;
+                for (JsonElement element : features) {
+                    JsonObject feature = element.getAsJsonObject();
                     JsonObject attributes = feature.getAsJsonObject().getAsJsonObject("attributes");
                     JsonObject geometry = feature.getAsJsonObject().getAsJsonObject("geometry");
 
                     String name = attributes.get("hospital_name").getAsString();
 
-                    String waitTime = attributes.get("en_wait_range").getAsString() && !attributes.get("en_wait_range").isJsonNull() ? attributes.get("en_wait_range").getAsString() : "N/A";
+                    String waitTime = "N/A";
+                    if (attributes.has("ed_wait_range") && !attributes.get("ed_wait_range").isJsonNull()) {
+                        waitTime = attributes.get("ed_wait_range").getAsString();
+                    }
 
                     double longitude = geometry.get("x").getAsDouble();
                     double latitude = geometry.get("y").getAsDouble();
 
-                    System.out.format("[%d]hosital: %s\n wait time: %s\n coordinates: (%.6f, %.6f)\n", features.indexOf(feature) + 1, name, waitTime, latitude, longitude);
+                    System.out.format("[%d]hosital: %s\n wait time: %s\n coordinates: (%.6f, %.6f)\n"
+                                        , count++, name, waitTime, latitude, longitude);
                 }
                 System.out.println("------End of Coordinates-----");
             } else {
                 System.out.println("Request failed with status code: " + strResponse.statusCode());
             }
         } catch (Exception e) {
-            System.out.println("An error occurred: " + strResponse.statusCode());
+            System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
         }   
     }
