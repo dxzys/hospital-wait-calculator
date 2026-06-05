@@ -1,7 +1,7 @@
 import requests # we will need this to send HTTP requests to the APIs (retreive the data)
 
 # set constants for geocoder and NB hospital data API urls
-#   https://geocoder.ca/
+GEOCODER_URL = "https://geocoder.ca/"
 #     parameters: ?postal={postal_code}&geoit=XML&json=1
 #   https://services7.arcgis.com/BuriUAtfp8cZMlDt/arcgis/rest/services/dev_waittimes_exb_hfl_6da46_c5905_9256e/FeatureServer/0/query
 #     parameters: ?f=json&where=1%3D1&outFields=*&resultRecordCount=100&returnGeometry=true
@@ -10,6 +10,17 @@ import requests # we will need this to send HTTP requests to the APIs (retreive 
 # function to calculate distance between two coordinates in kilometres (Haversine formula)
 
 # function to get coordinates from postal code
+def get_postal_coords(postal_code):
+  params = {
+    "postal": postal_code,
+    "geoit": "XML",
+    "json": 1
+  }
+  response = requests.get(GEOCODER_URL, params=params)
+  response.raise_for_status()
+  data = response.json()
+  
+  return float(data["longt"]), float(data["latt"])
 
 # function to get hospital data
 
@@ -22,6 +33,7 @@ def main():
 
   # call function to get coordinates from postal code
   # and store them as latitude and longitude
+  user_lat, user_lon = get_postal_coords(postal_code)
 
   # call function to get hospital data
 
