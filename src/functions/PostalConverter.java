@@ -28,16 +28,16 @@ public class PostalConverter {
                                                            .GET()
                                                            .build();
             // SEND THE REQUEST
-            System.out.println("accessing ArcGIS ");
+            System.out.println("accessing Geocoder");
             HttpResponse<String> strResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             // PRINT THE RESPONSE
             if (strResponse.statusCode() == 200) {
                 JsonObject rootObj = JsonParser.parseString(strResponse.body()).getAsJsonObject();
 
-                double lantitude = rootObj.get("latt").getAsDouble();
+                double latitude = rootObj.get("latt").getAsDouble();
                 double longitude = rootObj.get("longt").getAsDouble();
-                return new double[]{lantitude, longitude};
+                return new double[]{latitude, longitude};
             } else {
                 System.out.println("Error fetching location data: " + strResponse.statusCode());
             }
