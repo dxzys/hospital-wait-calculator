@@ -13,7 +13,7 @@ public class PostalConverter {
         try{
             //CREATE A URL
             String baseUrl = "https://geocoder.ca/";
-            String parameters = "?postal={postal_code}&geoit=XML&json=1";
+            String parameters = "?postal=" + postalCode + "&geoit=XML&json=1";
             String url = baseUrl + parameters;
 
             //INITIALIZE CLIENT

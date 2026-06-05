@@ -1,4 +1,6 @@
+package main;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,6 +25,11 @@ public class Main {
         System.out.format("Your location: (%.6f, %.6f)\n", userLocation[0], userLocation[1]);
 
         //GET INSTATIATE HOSPITAL DATA
-        functions.HospitalData.loadHospitalData();//i think we need to use both user location and hospital data at the same time 
+        functions.HospitalData.loadHospitalData();
+
+        //
+
+
+        scanner.close();
     }
 }
