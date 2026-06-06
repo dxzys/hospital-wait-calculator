@@ -1,3 +1,4 @@
+import sys
 import requests
 import math
 
@@ -97,7 +98,7 @@ def get_osrm_ranked(user_lat, user_lon, hospitals):
 def main():
     print("NB Hospital Distance Calculator\n")
 
-    postal_code = input("Enter your postal code (format: A1A1A1): ")
+    postal_code = sys.argv[1]
 
     user_lat, user_lon = get_postal_coords(postal_code)
 
