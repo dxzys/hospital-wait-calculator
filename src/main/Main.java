@@ -28,7 +28,7 @@ public class Main {
         System.out.format("Your location: (%.6f, %.6f)\n", userLocation[0], userLocation[1]);
 
         //GET INSTATIATE HOSPITAL DATA
-        //functions.HospitalData.loadHospitalData();
+        functions.HospitalData.loadHospitalData();
 
         //CALCULATE DISTANCE TO EACH HOSPITAL AND FIND THE CLOSE
         String rawJson = functions.HospitalData.loadHospitalData();
