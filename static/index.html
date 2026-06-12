@@ -20,15 +20,25 @@
         // INSTATIATE MAP
         const map = L.map('map').setView([45.273, -66.063], 13);
 
-        // LOAD
+        // OPEN STREETMAP
        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // MAKE POINT
-        hospitalMarker = L.marker([45.305, -66.084]).addTo(map);
-        hospitalMarker.bindPopup("<b>Saint John Regional Hconstospital</b><br>Wait time Loading....").openPopup();
+        // MAKE POINT RED
+    const redIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+});
+
+const hospitalMarker = L.marker([45.305, -66.084], {icon: redIcon}).addTo(map);
+hospitalMarker.bindPopup("<b>Saint John Regional Hospital</b><br>Wait time Loading....").openPopup();
+
     </script>
 </body>
 </html>
