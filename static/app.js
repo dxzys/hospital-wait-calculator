@@ -1,10 +1,15 @@
-const map = L.map('map').setView([45.273, -66.063], 8);
+// INITIALIZE MAP
+const map = L.map('map', {
+  preferCanvas: true
+}).setView([45.273, -66.063], 8);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+// UPDATE MAP
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors, © CARTO'
+}).addTo(map);
 
+// HOSIPITAL DATA
 const hospitals = [
               { name: "Dr. Georges-L.-Dumont University Hospital Centre", lat: 46.0988, lon: -64.7907 },
               { name: "The Moncton Hospital", lat: 46.0958, lon: -64.7972 },
@@ -26,8 +31,11 @@ const hospitals = [
               { name: "Miramichi Regional Hospital", lat: 47.0098, lon: -65.5670 },
 ];
 
+// COORDINATE SIGN
 hospitals.forEach(h => {
   L.marker([h.lat, h.lon])
     .addTo(map)
     .bindPopup(h.name);
 });
+
+// INTERACTIVE
