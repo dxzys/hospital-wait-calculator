@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content= "width=device-width, initial-scale=1.0">
-    <title>ER tracker Skeletion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER Wait Time Calculator</title>
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class ="container">
-        <h1>ER tracker Skeleton</h1>
+    <div class="container">
+        
+        <div id="header">
+            <h1>ER tracker Skeletion</h1>
+            <input type="text" id="postal-input" placeholder="Enter Postal Code">
+            <button id="calc-btn">Calculate</button>
+        </div>
+        
         <div id="map"></div>
     </div>
+
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

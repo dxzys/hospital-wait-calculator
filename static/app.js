@@ -6,6 +6,7 @@ const map = L.map('map', {
 // UPDATE MAP
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
+    subdomains: 'abcd',
     attribution: '© OpenStreetMap contributors, © CARTO'
 }).addTo(map);
 
@@ -39,3 +40,16 @@ hospitals.forEach(h => {
 });
 
 // INTERACTIVE
+const calcBtn = document.getElementById('calc-btn');
+const postalInput = document.getElementById('postal-input');
+
+calcBtn.addEventListener('click', () => {
+    const userPostal = postalInput.value.trim(); 
+    
+    if (userPostal === "") {
+        alert("Please enter a postal code!");
+        return;
+    }
+
+    alert("Python main.py to run");
+});
