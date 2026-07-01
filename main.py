@@ -3,7 +3,6 @@ import math
 import re
 from datetime import datetime
 
-GEOCODER_URL = "https://geocoder.ca/"
 HOSPITALS_URL = "https://services7.arcgis.com/BuriUAtfp8cZMlDt/arcgis/rest/services/dev_waittimes_exb_hfl_6da46_c5905_9256e/FeatureServer/0/query"
 OSRM_URL = "https://router.project-osrm.org"
 
@@ -20,17 +19,6 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     distance = R * c
     return distance
-
-def get_postal_coords(postal_code):
-    postal_code = postal_code.strip().replace(" ", "").upper()
-    params = {
-        "postal": postal_code,
-        "json": 1
-    }
-    response = requests.get(GEOCODER_URL, params=params)
-    response.raise_for_status()
-    data = response.json()
-    return float(data["latt"]), float(data["longt"])
 
 def get_hospitals():
     params = {
