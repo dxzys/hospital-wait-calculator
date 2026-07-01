@@ -4,6 +4,7 @@ import re
 from datetime import datetime
 from geocode import get_postal_coords
 from hospitals_data import get_hospitals
+from hours import parse_opening_hours, is_currently_open
 
 OSRM_URL = "https://router.project-osrm.org"
 
@@ -35,27 +36,6 @@ def classify_hospital(hospital):
     if wait_range == "Data not available":
         return "no_data"
     return "open"
-
-def parse_opening_hours(hours_str):
-    if not hours_str or hours_str in ("24/7", "24 h"):
-        return None, None, True
-
-    match = re.search(r"(\d+)\s*am?\s*[\-\u2013]\s*(\d+)\s*pm?", hours_str.lower())
-    if match:
-        open_hr = int(match.group(1))
-        close_hr = int(match.group(2)) + 12
-        return open_hr, close_hr, False
-
-    return None, None, False
-
-def is_currently_open(opening_hours):
-    open_hr, close_hr, always_open = parse_opening_hours(opening_hours)
-    if always_open:
-        return True
-    if open_hr is None:
-        return True
-    now = datetime.now()
-    return open_hr <= now.hour < close_hr
 
 def compute_score(hospital, driving_duration_s, all_ed_volumes):
     # Estimated hours until discharge: drive + visit duration + busyness penalty (lower = better)
